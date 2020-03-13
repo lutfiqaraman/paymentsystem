@@ -1,4 +1,4 @@
-<form [formGroup]="accService.accountsForm" class="normal-form">
+<form [formGroup]="accService.accountsForm" class="normal-form" (submit)="onSubmitAccount()">
     <mat-grid-list cols="2" rowHeight="250px">
         <mat-grid-tile>
             <div class="controls-container">
