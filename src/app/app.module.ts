@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
@@ -17,6 +17,7 @@ import { PaymentComponent } from './components/payments/payment/payment.componen
 import { AccountComponent } from './components/accounts/account/account.component';
 
 import { AccountsService } from './services/accounts.service';
+import { AccountListComponent } from './components/accounts/account-list/account-list.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +25,12 @@ import { AccountsService } from './services/accounts.service';
     routingComponents,
     PaymentListComponent,
     PaymentComponent,
-    AccountComponent
+    AccountComponent,
+    AccountListComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

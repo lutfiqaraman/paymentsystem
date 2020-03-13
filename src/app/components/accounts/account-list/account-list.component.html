@@ -1,0 +1,55 @@
+<div class="search-div">
+    <button mat-raised-button>
+      <mat-icon>add</mat-icon>Create
+    </button>
+    <mat-form-field class="search-form-field" floatLabel="never">
+        <input matInput [(ngModel)]="searchKey" placeholder="Search..." autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey" (click)="onSearchClear()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="listAccountsData" matSort>
+        
+        <ng-container matColumnDef="accountNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Account No.</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.accountNo}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="accountHolderName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Holder Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.accountHolderName}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="accountDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Account Description</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.accountDescription}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="accountHolderPhoneNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.accountHolderPhoneNumber}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-icon-button><mat-icon>launch</mat-icon></button>
+                <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+                loading data ...
+            </mat-footer-cell>
+        </ng-container>
+        
+        <mat-header-row *matHeaderRowDef="gridColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: gridColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': listAccountsData!=null}"></mat-footer-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>
