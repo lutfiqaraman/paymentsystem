@@ -1,0 +1,36 @@
+<form [formGroup]="accService.accountsForm" class="normal-form">
+    <mat-grid-list cols="2" rowHeight="250px">
+        <mat-grid-tile>
+            <div class="controls-container">
+                <input type="hidden" formControlName="$key">
+                <mat-form-field>
+                    <input formControlName="accountNo" matInput placeholder="Account Number *">
+                    <mat-error>account number should be 6 digits, eg: 123123</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="accountHolderName" matInput placeholder="Account Holder Name *">
+                    <mat-error>This is a mandatory field</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="controls-container">
+                <mat-form-field>
+                    <input formControlName="accountDescription" matInput placeholder="Account Description">
+                    <mat-hint>max. 1000 characters</mat-hint>
+                    <mat-error>You have reached your maximum limit of characters allowed</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="accountHolderPhoneNumber" matInput placeholder="Account Holder Phone Number">
+                </mat-form-field>  
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <div class="button-row">
+        <button mat-raised-button color="primary" type="submit" [disabled]="accService.accountsForm.invalid">Submit</button>
+        <button mat-raised-button color="warn" (click)="clearAccountForm()">Clear</button>
+    </div>
+    
+    
+</form>  
