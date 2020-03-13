@@ -3,6 +3,8 @@ import { AccountsService } from 'src/app/services/accounts.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AccountComponent } from '../account/account.component';
 
 @Component({
   selector: 'app-account-list',
@@ -11,7 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class AccountListComponent implements OnInit {
 
-  constructor(private accService: AccountsService) { }
+  constructor(private accService: AccountsService, private dialog: MatDialog) { }
 
   listAccountsData: MatTableDataSource<any>;
   gridColumns: string[] = ['accountNo', 'accountHolderName', 'accountDescription', 'accountHolderPhoneNumber', 'actions'];
@@ -42,5 +44,14 @@ export class AccountListComponent implements OnInit {
   onSearchClear() {
     this.searchKey = '';
     this.applyFilter();
+  }
+
+  onCreateFormAccount() {
+    this.accService.initForm();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    this.dialog.open(AccountComponent, dialogConfig);
   }
 }
