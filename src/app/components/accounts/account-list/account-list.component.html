@@ -36,8 +36,9 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <button mat-icon-button><mat-icon>launch</mat-icon></button>
-                <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+                <button mat-icon-button (click)="onDisplayAccountForm(row)"><mat-icon>visibility</mat-icon></button>
+                <button mat-icon-button (click)="onEditAccountForm(row)"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button color="warn" (click)="onDeleteAccount(row.$key)"><mat-icon>delete_outline</mat-icon></button>
             </mat-cell>
         </ng-container>
 

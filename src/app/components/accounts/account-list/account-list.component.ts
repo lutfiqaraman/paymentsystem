@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AccountComponent } from '../account/account.component';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-account-list',
@@ -13,7 +14,10 @@ import { AccountComponent } from '../account/account.component';
 })
 export class AccountListComponent implements OnInit {
 
-  constructor(private accService: AccountsService, private dialog: MatDialog) { }
+  constructor(
+    private accService: AccountsService,
+    private dialog: MatDialog,
+    private notify: NotificationService) { }
 
   listAccountsData: MatTableDataSource<any>;
   gridColumns: string[] = ['accountNo', 'accountHolderName', 'accountDescription', 'accountHolderPhoneNumber', 'actions'];
@@ -54,4 +58,34 @@ export class AccountListComponent implements OnInit {
     dialogConfig.width = '60%';
     this.dialog.open(AccountComponent, dialogConfig);
   }
+
+  onEditAccountForm(row) {
+    this.accService.popUpForm(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    this.dialog.open(AccountComponent, dialogConfig);
+  }
+
+  onDeleteAccount($key) {
+    if (confirm('Would you like to delete this account?')) {
+      this.accService.deleteAccount($key);
+      this.notify.warn('Account has been deleted');
+    }
+  }
+
+  onDisplayAccountForm(row) {
+    this.accService.popUpForm(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    this.dialog.open(AccountComponent, dialogConfig);
+
+    this.accService.accountsForm.disable();
+    this.accService.accountsForm.controls.submitAcc.disable();
+    this.accService.accountsForm.controls.clearAcc.disable();
+  }
+
 }

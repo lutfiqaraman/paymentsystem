@@ -67,3 +67,13 @@ mat-footer-row mat-footer-cell {
     height: 32px;
     width: 32px;
 }
+
+.warn {
+    background-color: #B00020;
+    font-weight: bold;
+}
+
+.success {
+    background: #4BB543;
+    font-weight: bold;
+}

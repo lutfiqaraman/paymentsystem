@@ -60,4 +60,8 @@ export class AccountsService {
     this.accountList.remove($key);
   }
 
+  popUpForm(account) {
+    this.accountsForm.setValue(account);
+  }
+
 }
