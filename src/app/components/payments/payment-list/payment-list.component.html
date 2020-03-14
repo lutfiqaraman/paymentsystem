@@ -1,1 +1,61 @@
-<p>payment-list works!</p>
+<div class="search-div">
+    <button mat-raised-button (click)="onCreateFormPayment()">
+      <mat-icon>add</mat-icon>Create
+    </button>
+    <mat-form-field class="search-form-field" floatLabel="never">
+        <input matInput [(ngModel)]="searchKey" placeholder="Search..." autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey" (click)="onSearchClear()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="listPaymentsData" matSort>
+        
+        <ng-container matColumnDef="sourceAccountNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>From Account</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.sourceAccountNumber}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="destinationAccountNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>To Account</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.destinationAccountNumber}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="currencyCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Currency Code</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.currencyCode}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.amount}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="paymentDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.paymentDescription}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-icon-button (click)="onDisplayPaymentForm(row)"><mat-icon>visibility</mat-icon></button>
+                <button mat-icon-button (click)="onEditPaymentForm(row)"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button color="warn" (click)="onDeletePayment(row.$key)"><mat-icon>delete_outline</mat-icon></button>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+                loading data ...
+            </mat-footer-cell>
+        </ng-container>
+        
+        <mat-header-row *matHeaderRowDef="gridColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: gridColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': listPaymentsData!=null}"></mat-footer-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>

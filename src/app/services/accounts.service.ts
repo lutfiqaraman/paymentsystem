@@ -20,7 +20,7 @@ export class AccountsService {
     accountDescription: new FormControl('', Validators.maxLength(1000))
   });
 
-  /* Empty rhe account form by click clear button */
+  /* Empty the account form by click clear button */
   initForm() {
     this.accountsForm.setValue({
       $key: null,
@@ -47,6 +47,7 @@ export class AccountsService {
     });
   }
 
+  /* Update an account in firebase database */
   updateAccount(account) {
     this.accountList.update(account.$key, {
       accountNo: account.accountNo,
@@ -56,10 +57,12 @@ export class AccountsService {
     });
   }
 
+  /* Delete an account in firebase database */
   deleteAccount($key: string) {
     this.accountList.remove($key);
   }
 
+  /* Popuo an account form  */
   popUpForm(account) {
     this.accountsForm.setValue(account);
   }

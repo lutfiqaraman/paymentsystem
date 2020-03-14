@@ -20,7 +20,13 @@ export class AccountListComponent implements OnInit {
     private notify: NotificationService) { }
 
   listAccountsData: MatTableDataSource<any>;
-  gridColumns: string[] = ['accountNo', 'accountHolderName', 'accountDescription', 'accountHolderPhoneNumber', 'actions'];
+  gridColumns: string[] = [
+    'accountNo',
+    'accountHolderName',
+    'accountDescription',
+    'accountHolderPhoneNumber',
+    'actions'];
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
