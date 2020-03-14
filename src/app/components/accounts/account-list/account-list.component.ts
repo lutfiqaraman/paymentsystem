@@ -90,8 +90,6 @@ export class AccountListComponent implements OnInit {
     this.dialog.open(AccountComponent, dialogConfig);
 
     this.accService.accountsForm.disable();
-    this.accService.accountsForm.controls.submitAcc.disable();
-    this.accService.accountsForm.controls.clearAcc.disable();
   }
 
 }

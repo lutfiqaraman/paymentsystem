@@ -36,8 +36,8 @@
     </mat-grid-list>
 
     <div class="button-row">
-        <button formControlName='submitAcc' mat-raised-button color="primary" type="submit" [disabled]="accService.accountsForm.invalid">Submit</button>
-        <button formControlName='clearAcc' mat-raised-button color="warn" (click)="clearAccountForm()">Clear</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="accService.accountsForm.invalid">Submit</button>
+        <button mat-raised-button color="warn" (click)="clearAccountForm()">Clear</button>
     </div>
     
 </form>  

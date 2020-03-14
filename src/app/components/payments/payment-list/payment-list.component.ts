@@ -22,11 +22,12 @@ export class PaymentListComponent implements OnInit {
     listPaymentsData: MatTableDataSource<any>;
 
     gridColumns: string[] = [
-      'destinationAccountNumber',
       'sourceAccountNumber',
+      'destinationAccountNumber',
       'currencyCode',
       'amount',
-      'paymentDescription'];
+      'paymentDescription',
+      'actions'];
 
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -91,8 +92,7 @@ export class PaymentListComponent implements OnInit {
     this.dialog.open(PaymentComponent, dialogConfig);
 
     this.paymentService.paymentsForm.disable();
-    this.paymentService.paymentsForm.controls.submitAcc.disable();
-    this.paymentService.paymentsForm.controls.clearAcc.disable();
+
   }
 
 }

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators  } from '@angular/forms';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { NotificationService } from '../services/notification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentsService {
 
-  constructor(private firebase: AngularFireDatabase) { }
+  constructor(private firebase: AngularFireDatabase, private notify: NotificationService) { }
 
   paymentList: AngularFireList<any>;
 
@@ -66,7 +67,7 @@ export class PaymentsService {
   }
 
   /* Popuo an account form  */
-  popUpForm(paymeny) {
-    this.paymentsForm.setValue(paymeny);
+  popUpForm(payment) {
+    this.paymentsForm.setValue(payment);
   }
 }
