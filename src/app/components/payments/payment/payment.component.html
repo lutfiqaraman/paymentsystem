@@ -12,7 +12,12 @@
             <div class="controls-container">
                 <input type="hidden" formControlName="$key">
                 <mat-form-field>
-                    <input formControlName="sourceAccountNumber" matInput placeholder="From Account*">
+                    <mat-select formControlName="sourceAccountNumber" placeholder="From Account*">
+                        <mat-option>None</mat-option>
+                        <ng-container *ngFor="let account of accountslist.accounts">
+                            <mat-option value={{account.$key}}>{{account.accountNo}}</mat-option>
+                        </ng-container>
+                    </mat-select>
                     <mat-error>This is a mandatory field</mat-error>
                 </mat-form-field>
                 <mat-form-field>
@@ -30,12 +35,17 @@
         <mat-grid-tile>
             <div class="controls-container">
                 <mat-form-field>
-                    <input formControlName="destinationAccountNumber" matInput placeholder="To Account*">
+                    <mat-select formControlName="destinationAccountNumber" placeholder="To Account*">
+                        <mat-option>None</mat-option>
+                        <ng-container *ngFor="let account of accountslist.accounts">
+                            <mat-option value={{account.$key}}>{{account.accountNo}}</mat-option>
+                        </ng-container>
+                    </mat-select>
                     <mat-error>This is a mandatory field</mat-error>
                 </mat-form-field>
                 <mat-form-field>
-                    <input formControlName="amount" matInput placeholder="Amount*">
-                    <mat-error>This is a mandatory field</mat-error>
+                    <input type="number" formControlName="amount" matInput placeholder="Amount*">
+                    <mat-error>This is a mandatory field and should be positive</mat-error>
                 </mat-form-field>  
             </div>
         </mat-grid-tile>

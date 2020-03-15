@@ -17,7 +17,7 @@ export class PaymentsService {
     destinationAccountNumber: new FormControl('', Validators.required),
     sourceAccountNumber: new FormControl('', Validators.required),
     currencyCode: new FormControl('', [Validators.required]),
-    amount: new FormControl('', [Validators.required]),
+    amount: new FormControl('', [Validators.required, Validators.min(0.001)]),
     paymentDescription: new FormControl('')
   });
 

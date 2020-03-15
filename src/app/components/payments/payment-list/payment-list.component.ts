@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PaymentComponent } from '../payment/payment.component';
 import { NotificationService } from 'src/app/services/notification.service';
+import { CurrenciesService } from 'src/app/services/currencies.service';
 
 @Component({
   selector: 'app-payment-list',
@@ -16,6 +17,7 @@ export class PaymentListComponent implements OnInit {
 
   constructor(
     private paymentService: PaymentsService,
+    private currencyService: CurrenciesService,
     private dialog: MatDialog,
     private notify: NotificationService) { }
 
@@ -37,8 +39,10 @@ export class PaymentListComponent implements OnInit {
     this.paymentService.getPayments().subscribe(
       list => {
         const array = list.map(item => {
+          const currencyCode = this.currencyService.getCurrencyCode(item.payload.val().$key);
           return {
             $key: item.key,
+            currencyCode,
             ...item.payload.val()
           };
         });

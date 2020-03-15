@@ -6,15 +6,15 @@ import * as _lodash from 'lodash';
 @Injectable({
   providedIn: 'root'
 })
-export class CurrenciesService {
-  currenciesList: AngularFireList<any>;
-  currencies = [];
+export class AccountslistService {
+  accountsList: AngularFireList<any>;
+  accounts = [];
 
   constructor(private firebaseDB: AngularFireDatabase) {
-    this.currenciesList = this.firebaseDB.list('currencies');
-    this.currenciesList.snapshotChanges().subscribe(
+    this.accountsList = this.firebaseDB.list('accounts');
+    this.accountsList.snapshotChanges().subscribe(
       list => {
-        this.currencies = list.map(item => {
+        this.accounts = list.map(item => {
           return {
             $key: item.key,
             ...item.payload.val()
@@ -24,14 +24,14 @@ export class CurrenciesService {
     );
   }
 
-  getCurrencyCode($key: string) {
+  getAccountNo($key: string) {
     if ($key === '0') {
       return '';
     } else {
-      const currencyCode = _lodash.find(this.currencies, (obj) => {
+      const accountNo = _lodash.find(this.accounts, (obj) => {
         return obj.$key === $key;
       });
-      return currencyCode;
+      return accountNo;
     }
   }
 }

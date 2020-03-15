@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 import { PaymentsService } from '../../../services/payments.service';
 import { CurrenciesService } from '../../../services/currencies.service';
+import { AccountslistService } from '../../../services/accountslist.service';
 import { NotificationService } from '../../../services/notification.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class PaymentComponent implements OnInit {
   constructor(
     public paymentService: PaymentsService,
     public currenciesService: CurrenciesService,
+    public accountslist: AccountslistService,
     public notify: NotificationService,
     public dialogRef: MatDialogRef<PaymentComponent>) { }
 

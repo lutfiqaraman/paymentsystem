@@ -1,9 +1,15 @@
-<div class="container">
-  <mat-toolbar>
-    <span class="fill-remaining-space"></span>
-    <span>Payments System</span>
-    <span class="fill-remaining-space"></span>
-  </mat-toolbar>
+<mat-toolbar color="primary" class="navbar">
+  <div>
+    <a [routerLink]="['/']">Payments System</a>
+  </div>
+  <div>
+    <a [routerLink]="['/accounts']">Accounts</a>
+    <a [routerLink]="['/payments']">Payments</a>
+  </div>
+</mat-toolbar>
+
+<div class="center">
+  <h3>A SIMPLE PAYMENT SYSTEM</h3>
 </div>
 
 <router-outlet></router-outlet>
