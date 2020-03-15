@@ -16,7 +16,12 @@
                     <mat-error>This is a mandatory field</mat-error>
                 </mat-form-field>
                 <mat-form-field>
-                    <input formControlName="currencyCode" matInput placeholder="Currency Code*">
+                    <mat-select formControlName="currencyCode" placeholder="Currency Code*"> 
+                        <mat-option>None</mat-option>
+                        <ng-container *ngFor="let currency of currenciesService.currencies">
+                            <mat-option value={{currency.$key}}>{{currency.code}}</mat-option>
+                        </ng-container>
+                    </mat-select>
                     <mat-error>This is a mandatory field</mat-error>
                 </mat-form-field>
             </div>

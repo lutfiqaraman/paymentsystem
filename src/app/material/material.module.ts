@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSelectModule,
     MatFormFieldModule
   ],
   exports: [
@@ -41,6 +43,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSelectModule,
     MatFormFieldModule
   ]
 })

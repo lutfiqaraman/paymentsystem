@@ -8,16 +8,18 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+import { environment } from '../environments/environment';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { environment } from '../environments/environment';
 
 import { PaymentListComponent } from './components/payments/payment-list/payment-list.component';
 import { PaymentComponent } from './components/payments/payment/payment.component';
 import { AccountComponent } from './components/accounts/account/account.component';
+import { AccountListComponent } from './components/accounts/account-list/account-list.component';
 
 import { AccountsService } from './services/accounts.service';
-import { AccountListComponent } from './components/accounts/account-list/account-list.component';
+import { CurrenciesService } from './services/currencies.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import { AccountListComponent } from './components/accounts/account-list/account
     ReactiveFormsModule,
     AngularFireDatabaseModule
   ],
-  providers: [AccountsService],
+  providers: [AccountsService, CurrenciesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
