@@ -15,11 +15,13 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { AccountsService } from './services/accounts.service';
 import { CurrenciesService } from './services/currencies.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
+    NavbarComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
