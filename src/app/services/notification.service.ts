@@ -11,7 +11,7 @@ export class NotificationService {
   constructor(public snakBar: MatSnackBar) { }
 
   config: MatSnackBarConfig = {
-    duration: 2000
+    duration: 3000
   };
 
   success(msg) {
